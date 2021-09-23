@@ -19,6 +19,10 @@ object Kotlingua {
         }
     }
 
+    fun getLanguageByIso(isoCode: String): Lang? {
+        return Lang.values().find { it.iso == isoCode }
+    }
+
 }
 
 fun kotlingua(kotlingua: Kotlingua.() -> Unit) = Kotlingua.apply(kotlingua)
