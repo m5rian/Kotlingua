@@ -4,7 +4,7 @@ import java.io.InputStream
 import java.util.*
 
 object Kotlingua {
-    private var directory: String = ""
+    var directory: String = ""
     lateinit var defaultLang: Lang
     val languages: MutableMap<Lang, Properties> = mutableMapOf()
 
