@@ -1,7 +1,9 @@
 package com.github.m5rian.kotlingua
 
+import kotlinx.serialization.Serializable
 import java.io.FileNotFoundException
 
+@Serializable(with = LangSerializer::class)
 enum class Lang(val iso: String) {
     AFRIKAANS("af"),
     ALBANIAN("sq"),

@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.10"
+    kotlin("plugin.serialization") version "1.5.30"
     `maven-publish`
 }
 
@@ -11,6 +12,10 @@ version = "0.3"
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.2.2")
 }
 
 tasks.test {
