@@ -131,15 +131,17 @@ enum class Lang(val iso: String) {
     YIDDISH("ji"),
     ZULU("zu");
 
-    fun get(key: String, builder: ArgumentBuilder.() -> Unit = {}): String {
+    suspend fun get(key: String, builder: suspend (ArgumentBuilder) -> Unit = {}): String {
         if (!Kotlingua.languages.containsKey(this)) throw FileNotFoundException("The language ${this.name} isn't loaded up")
 
         var translation: String? = Kotlingua.languages[this]?.getProperty(key)
         if (translation == null && Kotlingua.defaultLangIsSet()) translation = Kotlingua.languages[Kotlingua.defaultLang]?.getProperty(key)
 
-        val args = ArgumentBuilder().apply(builder).args
-        args.forEach { (key, value) -> translation = translation?.replace("{$key}", value.toString()) }
+        val argumentBuilder = ArgumentBuilder()
+        builder.invoke(argumentBuilder)
+        argumentBuilder.args.forEach { (key, value) -> translation = translation?.replace("{$key}", value.toString()) }
 
         return translation ?: throw NullPointerException("For the key \"$key\" doesn't exist any translation")
     }
+
 }

@@ -8,14 +8,18 @@ plugins {
 
 group = "com.github.m5rian"
 val id = "Kotlingua"
-version = "0.6"
+version = "0.7"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // Serialization
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.2.2")
+    // Coroutines
+    implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.5.2")
+    implementation("org.jetbrains.kotlinx", name = "kotlinx-coroutines-jdk8", version = "1.5.2")
 }
 
 tasks.test {
