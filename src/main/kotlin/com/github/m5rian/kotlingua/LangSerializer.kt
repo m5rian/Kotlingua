@@ -10,5 +10,5 @@ import kotlinx.serialization.encoding.Encoder
 object LangSerializer : KSerializer<Lang> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Lang", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Lang) = encoder.encodeString(value.iso)
-    override fun deserialize(decoder: Decoder): Lang = Lang.values().first { it.iso == decoder.decodeString() }
+    override fun deserialize(decoder: Decoder): Lang = Kotlingua.languages.first { it.iso == decoder.decodeString() }
 }

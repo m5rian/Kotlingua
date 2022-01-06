@@ -8,7 +8,7 @@ plugins {
 
 group = "com.github.m5rian"
 val id = "Kotlingua"
-version = "0.7"
+version = "1.0"
 
 repositories {
     mavenCentral()
